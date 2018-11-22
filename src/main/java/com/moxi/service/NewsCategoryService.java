@@ -11,12 +11,12 @@ import com.moxi.model.NewsCategory;
 @Mapper
 public interface NewsCategoryService {
 	
-	@Select("SELECT * FROM `moxi`.`news_category` where id = #{id};")
+	@Select("SELECT * FROM `wealth`.`news_category` where id = #{id};")
 	NewsCategory findById(NewsCategory newsCategory);
 	
 	@Select({
 		"<script>",
-		"SELECT * FROM `moxi`.`news_category`",
+		"SELECT * FROM `wealth`.`news_category`",
 		"WHERE state = 1",
 			"<when test='name!=null'>",
 				"AND name LIKE CONCAT('%',#{name},'%')",
@@ -28,7 +28,7 @@ public interface NewsCategoryService {
 	
 	@Select({
 		"<script>",
-		"SELECT count(*) FROM `moxi`.`news_category`",
+		"SELECT count(*) FROM `wealth`.`news_category`",
 		"WHERE state = 1",
 			"<when test='name!=null'>",
 				"AND name LIKE CONCAT('%',#{name},'%')",
@@ -37,12 +37,12 @@ public interface NewsCategoryService {
 	})
 	int count(NewsCategory newsCategory);
 	
-	@Insert("INSERT INTO `moxi`.`news_category` (`id`, `name`, `description`, `image`, `addDate`, `state`) VALUES (null, #{name}, #{description}, #{image}, now(), 1);")
+	@Insert("INSERT INTO `wealth`.`news_category` (`id`, `name`, `description`, `image`, `addDate`, `state`) VALUES (null, #{name}, #{description}, #{image}, now(), 1);")
 	int insert(NewsCategory newsCategory);
 	
-	@Update("UPDATE `moxi`.`news_category`SET `name` = #{name}, `description` = #{description}, `image` = #{image} WHERE `id` = #{id};")
+	@Update("UPDATE `wealth`.`news_category`SET `name` = #{name}, `description` = #{description}, `image` = #{image} WHERE `id` = #{id};")
 	int update(NewsCategory newsCategory);
 	
-	@Update("UPDATE `moxi`.`news_category`SET `state` = #{state} WHERE `id` = #{id};")
+	@Update("UPDATE `wealth`.`news_category`SET `state` = #{state} WHERE `id` = #{id};")
 	int updateState(NewsCategory newsCategory);
 }

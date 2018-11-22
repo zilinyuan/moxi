@@ -48,6 +48,12 @@ public class AdminController {
 		}
 	}
 
+	@GetMapping("/admin/layOut")
+	public String layOutPost(Admin admin, Model model, HttpSession httpSession) {
+		httpSession.removeAttribute("admin");
+		return "login";
+	}
+
 	/**
 	 * 注册
 	 * 

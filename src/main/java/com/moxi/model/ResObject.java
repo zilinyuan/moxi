@@ -1,7 +1,16 @@
 package com.moxi.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.util.List;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ResObject<T> {
 
 	private String resCode;
@@ -9,44 +18,10 @@ public class ResObject<T> {
 	private Object resObject;
 	private List<T> resList;
 
-	public ResObject(String resCode,String resMessage,Object resObject,List<T> resList){
-		this.resCode = resCode;
-		this.resMessage = resMessage;
-		this.resObject = resObject;
-		this.resList = resList;
-	}
 
-	public Object getResObject() {
-		return resObject;
+	@Override
+	public String toString(){
+		return ReflectionToStringBuilder.toString(this, ToStringStyle.JSON_STYLE);
 	}
-
-	public void setResObject(Object resObject) {
-		this.resObject = resObject;
-	}
-
-	public String getResCode() {
-		return resCode;
-	}
-
-	public void setResCode(String resCode) {
-		this.resCode = resCode;
-	}
-
-	public String getResMessage() {
-		return resMessage;
-	}
-
-	public void setResMessage(String resMessage) {
-		this.resMessage = resMessage;
-	}
-
-	public List<T> getResList() {
-		return resList;
-	}
-
-	public void setResList(List<T> resList) {
-		this.resList = resList;
-	}
-
 
 }
